@@ -42,28 +42,36 @@ export function Navigation() {
         <div className="flex-grow" style={{ backgroundColor: "#212529" }}>
           <nav className="flex-grow">
             <ul className="mt-5">
-              <li className="flex items-center hover:bg-gray-700 pt-2 pb-2 pl-4">
-                <i className="bi bi-speedometer2"></i>
-                <Link
-                  to="/"
-                  className={`${
-                    esBarraLateralAbierta ? "ml-4 opacity-100" : "opacity-0"
-                  } ml-4 text-sm font-semibold transition-opacity duration-600 ease-in-out delay-250`}
-                >
-                  Dashboard
-                </Link>
-              </li>
-              <li className="flex items-center hover:bg-gray-700 pt-2 pb-2 pl-4">
-                <i className="bi bi-ticket-perforated"></i>
-                <Link
-                  to="/tickets"
-                  className={`${
-                    esBarraLateralAbierta ? "ml-4 opacity-100" : "opacity-0"
-                  } ml-4 text-sm font-semibold transition-opacity duration-600 ease-in-out delay-250`}
-                >
-                  Tickets
-                </Link>
-              </li>
+              <Link
+                to="/"
+                className="flex items-center hover:bg-gray-700 pt-2 pb-2 pl-4"
+              >
+                <li className="flex items-center">
+                  <i className="bi bi-speedometer2 cursor-pointer"></i>
+                  <span
+                    className={`${
+                      esBarraLateralAbierta ? "ml-4 opacity-100" : "opacity-0"
+                    } ml-4 text-sm font-semibold transition-opacity duration-600 ease-in-out delay-250`}
+                  >
+                    Dashboard
+                  </span>
+                </li>
+              </Link>
+              <Link
+                to="/tickets"
+                className="flex items-center hover:bg-gray-700 pt-2 pb-2 pl-4"
+              >
+                <li className="flex items-center">
+                  <i className="bi bi-ticket-perforated cursor-pointer"></i>
+                  <span
+                    className={`${
+                      esBarraLateralAbierta ? "ml-4 opacity-100" : "opacity-0"
+                    } ml-4 text-sm font-semibold transition-opacity duration-600 ease-in-out delay-250`}
+                  >
+                    Tickets
+                  </span>
+                </li>
+              </Link>
             </ul>
           </nav>
         </div>
