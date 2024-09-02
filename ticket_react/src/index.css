@@ -12,3 +12,12 @@ html, body {
   padding: 0;
   width: 100%;
 }
+
+/* BACKGROUND COLORES */
+.bg-turquesa-ticket {
+  background-color: #009688;
+}
+
+.bg-gris-oscuro-ticket {
+  background-color: #212529;
+}
