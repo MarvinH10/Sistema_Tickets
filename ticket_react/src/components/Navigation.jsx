@@ -25,7 +25,7 @@ export function Navigation({ esBarraLateralAbierta }) {
             <Link
               key={to}
               to={to}
-              className="flex items-center pt-2 pb-2 pl-4 hover:bg-gray-700"
+              className="relative flex items-center pt-2 pb-2 pl-4 hover:bg-gray-700 group"
             >
               <li className="flex items-center">
                 <i className={`cursor-pointer bi ${icon}`}></i>
@@ -36,6 +36,11 @@ export function Navigation({ esBarraLateralAbierta }) {
                 >
                   {label}
                 </span>
+                {!esBarraLateralAbierta && (
+                  <span className="absolute px-2 py-1 ml-1 text-xs text-white transition-opacity duration-300 bg-black rounded opacity-0 left-full whitespace-nowrap group-hover:opacity-100">
+                    {label}
+                  </span>
+                )}
               </li>
             </Link>
           ))}
