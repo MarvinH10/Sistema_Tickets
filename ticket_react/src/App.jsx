@@ -1,10 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { DashboardPage } from "./pages/Dashboard/DashboardPage";
-import { Navigation } from "./components/Navigation";
 import { Toaster } from "react-hot-toast";
 import { useState } from "react";
+import Register from "./authentication/Register";
+import Login from "./authentication/Login";
+import AuthLayout from "./layouts/AuthLayout";
+import MainLayout from "./layouts/MainLayout";
 
-function App() {
+const App = () => {
+  const isAuthenticated = !!localStorage.getItem("access_token");
   const [esBarraLateralAbierta, setEsBarraLateralAbierta] = useState(
     JSON.parse(localStorage.getItem("esBarraLateralAbierta")) || false
   );
@@ -19,34 +23,43 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex h-screen">
-        <div
-          className="fixed top-0 left-0 z-10 flex items-center w-full h-12 transition-all duration-300 ease-in-out bg-turquesa-ticket"
-          style={{ marginLeft: margenIzquierdo }}
-        >
-          <button
-            onClick={alternarBarraLateral}
-            className="ml-4 text-white focus:outline-none"
-          >
-            {esBarraLateralAbierta ? "✕" : "☰"}
-          </button>
-        </div>
-        <Navigation
-          esBarraLateralAbierta={esBarraLateralAbierta}
-          alternarBarraLateral={alternarBarraLateral}
+      <Routes>
+        <Route
+          path="/register"
+          element={
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          }
         />
-        <div
-          className="flex-grow p-4 mt-12 transition-all duration-300 ease-in-out"
-          style={{ marginLeft: margenIzquierdo }}
-        >
-          <Routes>
-            <Route path="/" element={<DashboardPage />} />
-          </Routes>
-        </div>
-        <Toaster />
-      </div>
+        <Route
+          path="/login"
+          element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <MainLayout
+                esBarraLateralAbierta={esBarraLateralAbierta}
+                alternarBarraLateral={alternarBarraLateral}
+                margenIzquierdo={margenIzquierdo}
+              >
+                <DashboardPage />
+              </MainLayout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+      </Routes>
+      <Toaster />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

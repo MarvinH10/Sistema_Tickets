@@ -4,6 +4,8 @@ django-cors-headers
 coreapi
 setuptools
 drf-yasg
+#pip install djoser djangorestframework-simplejwt
+
 
 #REACT
 #npm i react-router-dom react-hot-toast axios react-hook-form
@@ -11,3 +13,5 @@ drf-yasg
 #npm install tailwindcss
 #npx tailwindcss init
 #npm install postcss autoprefixer
+#npm install axios
+#npm install prop-types

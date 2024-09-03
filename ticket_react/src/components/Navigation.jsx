@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import LogoutButton from "./LogoutButton";
 
 export function Navigation({ esBarraLateralAbierta }) {
   const links = [
@@ -46,6 +47,9 @@ export function Navigation({ esBarraLateralAbierta }) {
           ))}
         </ul>
       </nav>
+      <div className="hover:bg-gray-700 group">
+        <LogoutButton esBarraLateralAbierta={esBarraLateralAbierta} />
+      </div>
     </div>
   );
 }
