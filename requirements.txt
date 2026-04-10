@@ -5,4 +5,9 @@ coreapi
 setuptools
 drf-yasg
 
+#REACT
 #npm i react-router-dom react-hot-toast axios react-hook-form
+#npm install bootstrap-icons
+#npm install tailwindcss
+#npx tailwindcss init
+#npm install postcss autoprefixer
